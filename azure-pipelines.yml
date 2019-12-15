@@ -1,0 +1,37 @@
+trigger:
+- feature/nuget
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: 'Dmf.sln'
+  buildConfiguration: 'Release'
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    platform: 'Win32'
+    configuration: '$(buildConfiguration)'
+    
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    platform: 'x64'
+    configuration: '$(buildConfiguration)'
+    
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    platform: 'arm64'
+    configuration: '$(buildConfiguration)'
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'pack'
+    packagesToPack: 'nuget/Microsoft.DMF.nuspec'
+    configuration: 
+    versioningScheme: 'byBuildNumber'
