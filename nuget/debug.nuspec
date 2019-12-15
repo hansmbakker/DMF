@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata minClientVersion="2.5">
+    <id>Microsoft.DMF</id>
+    <version>1.0.0.0</version>
+    <title>DMF library</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Framework to easily develop simple and structured Windows Driver Framework (WDF) drivers and share code amongst your drivers.</description>
+    <releaseNotes></releaseNotes>
+    <tags>native C++ DMF nativepackage</tags>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <license type="file">LICENSE</license>
+    <projectUrl>https://github.com/microsoft/DMF</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/microsoft/DMF/master/nuget/driver.ico</iconUrl>
+    <icon>images\dmf.png</icon>
+  </metadata>
+  <files>
+    <file src="..\README.md"/>
+    <file src="..\LICENSE"/>
+    <file src="dmf.png" target="images\" />
+    <file src="..\Debug\Win32\lib\**\*.lib" target="build\native\lib\win32"/>
+    <file src="..\Debug\x64\lib\**\*.lib" target="build\native\lib\x64"/>
+    <file src="..\Debug\arm64\lib\**\*.lib" target="build\native\lib\arm64"/>
+    
+    <file src="..\Dmf\Framework\**\*.h;..\Dmf\Modules.Library\**\*.h" target="build\native\include" />
+    
+    <file src="Microsoft.DMF.props" target="build\native"/>
+    <file src="Microsoft.DMF.targets" target="build\native"/>
+  </files>
+</package>
